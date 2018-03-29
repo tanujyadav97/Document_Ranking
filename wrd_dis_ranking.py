@@ -16,7 +16,7 @@ for i in range(0,281080):
         else:
             pos[j]=(pos[j]*cou[j]+c)/(cou[j]+1)
             cou[j]=cou[j]+1
-    locs[i]=pos 
+    locs[i]=pos
 
 def wrd_dis_query(query):
     res={}
