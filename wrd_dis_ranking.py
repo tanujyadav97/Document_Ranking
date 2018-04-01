@@ -1,4 +1,3 @@
-from normalize import normalize
 import pickle
 
 data=pickle.load(open("bow.pkl", "rb"))
@@ -18,20 +17,6 @@ for i in range(0,281080):
             cou[j]=cou[j]+1
     locs[i]=pos
 
-def wrd_dis_query(query):
-    res={}
-    for i in range(0,281080):
-        dis=0
-        key=locs[i].keys()
-        for j in range(0,len(query)):
-            if query[j] in key:
-                for k in range(j+1,len(query)):
-                    if query[k] in key:
-                        dis+=abs(locs[i][query[j]]-locs[i][query[k]])
-                    else:
-                        dis+=10000
-            else:
-                dis+=10000*(len(query)-j-1)
-        res[i]=dis
-    res=normalize(1,res)
-    return res
+pickle.dump(locs,open("locs.pkl","wb"))
+locs.clear()
+
